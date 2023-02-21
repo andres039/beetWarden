@@ -1,0 +1,12 @@
+{
+  "project": "dwight",
+  "team": "andres039",
+  "prodUrl": "https://quaint-walrus-678.convex.cloud",
+  "functions": "convex/",
+  "authInfo": [
+    {
+      "domain": "https://dev-t3lbvgwgrkufcbog.us.auth0.com/",
+      "applicationID": "lrhsYk4EosavckPFvd8l2hxP307pHhwo"
+    }
+  ]
+}
