@@ -19,8 +19,8 @@ import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
 const useStyles = createStyles((theme) => ({
   wrapper: {
     backgroundSize: "cover",
-    backgroundImage:
-      "url(https://cdn.pixabay.com/photo/2015/03/24/08/52/beetroot-687251_960_720.jpg)",
+    // backgroundImage:
+    //   "url(https://cdn.pixabay.com/photo/2015/03/24/08/52/beetroot-687251_960_720.jpg)",
   },
 
   form: {
