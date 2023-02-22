@@ -13,7 +13,6 @@ import {
   List,
 } from "@mantine/core";
 import Link from "next/link";
-import { ListItem } from "@mui/material";
 import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
 
 const useStyles = createStyles((theme) => ({
@@ -89,12 +88,12 @@ export default function Login() {
               connection through Auth0, or, you can use this test account:
             </Text>
             <List>
-              <ListItem>
+              <List.Item>
                 <Text fw={700}>Username: </Text>  spongebob@squarepants.com{" "}
-              </ListItem>
-              <ListItem>
+              </List.Item>
+              <List.Item>
                 <Text fw={700}>Password: </Text> 1LovePatrick!
-              </ListItem>
+              </List.Item>
             </List>
             <Text>
               The source code is on GitHub. Thank you for taking the time to
