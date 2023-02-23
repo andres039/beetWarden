@@ -25,15 +25,15 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
     { name: "", username: "", password: "", id: "0", url: "", owner_id: "" },
   ];
 
-  const setAccount = (id: string) => {
+  // const setAccount = (id: string) => {
 
-      const selectedAccount = accounts.find(
-        (oneAccount) => id === oneAccount._id.toString()
-      );
-      console.log('selected', selectedAccount)
-      setCurrentAccount(selectedAccount);
+  //     const selectedAccount = accounts.find(
+  //       (oneAccount) => id === oneAccount._id.toString()
+  //     );
+  //     console.log('selected', selectedAccount)
+  //     setCurrentAccount(selectedAccount);
 
-  };
+  // };
 
   useEffect(() => setCurrentAccount(accounts[0]), []);
 
@@ -102,7 +102,7 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
                   variant="subtle"
                   key={account._id}
                   onClick={() => {
-                    setAccount(account._id.toString());
+                    // setAccount(account._id.toString());
                     setInputsDisabled(true);
                   }}
                 >
