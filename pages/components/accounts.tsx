@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Card,
@@ -21,21 +21,17 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
     ? `${user.given_name}  ${user.family_name}`
     : "Anonymus user";
 
-  const accounts = useQuery("listAccounts") || [
-    { name: "", username: "", password: "", id: "0", url: "", owner_id: "" },
-  ];
+  const accounts = useQuery("listAccounts");
 
-  // const setAccount = (id: string) => {
+  const setAccount = (id: string) => {
+    const selectedAccount = accounts.find(
+      (oneAccount) => id === oneAccount._id.toString()
+    );
+    console.log("selected", selectedAccount);
+    setCurrentAccount(selectedAccount);
+  };
 
-  //     const selectedAccount = accounts.find(
-  //       (oneAccount) => id === oneAccount._id.toString()
-  //     );
-  //     console.log('selected', selectedAccount)
-  //     setCurrentAccount(selectedAccount);
-
-  // };
-
-  useEffect(() => setCurrentAccount(accounts[0]), []);
+  useEffect(() => accounts && setCurrentAccount(accounts[0]), [accounts]);
 
   const createNewAccount = () => {
     setCurrentAccount({
@@ -47,6 +43,7 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
     });
     setInputsDisabled(false);
   };
+
   function LogoutButton() {
     const { logout } = useAuth0();
     return (
@@ -96,20 +93,21 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
       <Navbar.Section component={ScrollArea}>
         <Card withBorder>
           <Stack>
-            {accounts.map((account) => (
-              <>
-                <Button
-                  variant="subtle"
-                  key={account._id}
-                  onClick={() => {
-                    // setAccount(account._id.toString());
-                    setInputsDisabled(true);
-                  }}
-                >
-                  {account.name}
-                </Button>
-              </>
-            ))}
+            {accounts &&
+              accounts.map((account) => (
+                <>
+                  <Button
+                    variant="subtle"
+                    key={account._id.toString()}
+                    onClick={() => {
+                      setAccount(account._id.toString());
+                      setInputsDisabled(true);
+                    }}
+                  >
+                    {account.name}
+                  </Button>
+                </>
+              ))}
           </Stack>
         </Card>
       </Navbar.Section>
