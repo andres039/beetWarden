@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AccountInfo from "./accountInfo";
 import Accounts from "./accounts";
 import { Card, Center, Container, Grid } from "@mantine/core";
+import { useMediaQuery } from '@mantine/hooks';
 import { useAuth0 } from "@auth0/auth0-react";
 import Mobile from "./Mobile";
 
@@ -15,12 +16,20 @@ const Dashboard = () => {
     owner_id: "",
   });
   const [inputsDisabled, setInputsDisabled] = useState(false);
-  const isMobile = true;
+  const isMobile = useMediaQuery('(min-width: 900px)');
+  console.log('isMobile', isMobile)
   return (
     <>
       {user && (
         <Grid>
-          {isMobile ? (
+          {!isMobile ? (
+            <Mobile
+              currentAccount={currentAccount}
+              inputsDisabled={inputsDisabled}
+              setInputsDisabled={setInputsDisabled}
+              setCurrentAccount={setCurrentAccount}
+            />
+          ) : (
             <>
               <Grid.Col span={3}>
                 <Accounts
@@ -38,13 +47,6 @@ const Dashboard = () => {
                 />
               </Grid.Col>
             </>
-          ) : (
-            <Mobile
-              currentAccount={currentAccount}
-              inputsDisabled={inputsDisabled}
-              setInputsDisabled={setInputsDisabled}
-              setCurrentAccount={setCurrentAccount}
-            />
           )}
         </Grid>
       )}
