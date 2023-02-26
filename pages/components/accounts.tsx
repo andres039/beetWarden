@@ -4,7 +4,6 @@ import {
   Card,
   Center,
   Divider,
-  Footer,
   Navbar,
   ScrollArea,
   Stack,
