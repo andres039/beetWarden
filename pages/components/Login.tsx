@@ -89,18 +89,19 @@ export default function Login() {
             </Text>
             <List>
               <List.Item>
-                <Text fw={700}>Username: </Text>  spongebob@squarepants.com{" "}
+                <Text fw={700}>Username: </Text> spongebob@squarepants.com{" "}
               </List.Item>
               <List.Item>
                 <Text fw={700}>Password: </Text> 1LovePatrick!
               </List.Item>
             </List>
             <Text>
-              The source code is on GitHub. Thank you for taking the time to
-              look at this project. Any feedback is appreciated, you may
-              contact me on {" "}
+              The source code is on{" "}
+              <Link href="https://github.com/andres039/beetWarden">GitHub</Link>
+              . Thank you for taking the time to look at this project. Any
+              feedback is appreciated, you may contact me on{" "}
               <Link href="https://www.linkedin.com/in/andresbeltrangarcia/">
-                 LinkedIn
+                LinkedIn
               </Link>{" "}
             </Text>
             <Button
