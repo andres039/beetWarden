@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccountInfo from "./accountInfo";
 import Accounts from "./accounts";
-import { Card, Center, Container, Grid } from "@mantine/core";
+import { Grid } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import { useAuth0 } from "@auth0/auth0-react";
 import Mobile from "./Mobile";
@@ -17,7 +17,6 @@ const Dashboard = () => {
   });
   const [inputsDisabled, setInputsDisabled] = useState(false);
   const isMobile = useMediaQuery('(min-width: 900px)');
-  console.log('isMobile', isMobile)
   return (
     <>
       {user && (
