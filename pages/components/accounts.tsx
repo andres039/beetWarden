@@ -15,7 +15,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
   const { user } = useAuth0();
-
   const name = user.given_name
     ? `${user.given_name}  ${user.family_name}`
     : "Anonymus user";

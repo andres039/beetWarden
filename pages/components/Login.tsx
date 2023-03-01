@@ -22,7 +22,7 @@ export default function Login() {
           <Grid.Col md={4} p={0}>
             <Flex
               mih={"100vh"}
-              gap="md"
+              gap="lg"
               px={32}
               justify="center"
               align="center"
