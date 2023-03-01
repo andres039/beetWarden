@@ -89,7 +89,7 @@ export default function Login() {
                   display: "block",
                 }}
               >
-                <Image src={beetPic} alt="picture of beets" fill priority />
+                <Image src={beetPic} alt="picture of beets" fill priority placeholder="blur"/>
               </div>
             </Grid.Col>
           )}
