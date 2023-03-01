@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccountInfo from "./accountInfo";
 import Accounts from "./accounts";
-import { Burger, Divider, Flex, Group, Text } from "@mantine/core";
+import { Burger, Divider, Group, Text } from "@mantine/core";
 
 const Mobile = ({
   currentAccount,

@@ -1,58 +1,14 @@
 import Head from "next/head";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  Paper,
-  createStyles,
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Button,
-  Title,
-  Text,
-  Anchor,
-  List,
-} from "@mantine/core";
+import { Button, Flex, Title, Text, List, Grid, Card } from "@mantine/core";
 import Link from "next/link";
-import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
-
-const useStyles = createStyles((theme) => ({
-  wrapper: {
-    backgroundSize: "cover",
-    backgroundImage:
-      "url(https://cdn.pixabay.com/photo/2015/03/24/08/52/beetroot-687251_960_720.jpg)",
-  },
-
-  form: {
-    borderRight: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
-    }`,
-    minHeight: 900,
-    maxWidth: 450,
-    paddingTop: 80,
-
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      maxWidth: "100%",
-    },
-  },
-
-  title: {
-    color: "dark",
-
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
-
-  logo: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    width: 120,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-}));
+import Image from "next/image";
+import { useMediaQuery } from "@mantine/hooks";
+import beetPic from "../../public/beetroot.jpg";
 
 export default function Login() {
-  const { classes } = useStyles();
   const { isLoading, loginWithRedirect } = useAuth0();
+  const isMobile = useMediaQuery("(min-width: 900px)");
 
   return (
     <div>
@@ -62,61 +18,82 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className={classes.wrapper}>
-          <Paper className={classes.form} radius={0} p={30}>
-            <Title
-              order={2}
-              className={classes.title}
+        <Grid styles={{ maxHeight: "100vh" }}>
+          <Grid.Col md={4} p={0}>
+            <Flex
+              mih={"100vh"}
+              gap="md"
+              px={32}
+              justify="center"
               align="center"
-              mt="md"
-              mb={10}
+              direction="column"
+              wrap="wrap"
             >
-              Welcome to BeetWarden!
-            </Title>
-            <Text color="dimmed" align="center" mt={60}>
-              This is a password manager. It has nothing to do with beets. But
-              we like beets anyway.{" "}
-            </Text>
-            <Text color="dimmed" align="center" mb={30}>
-              Fact: Bears eat beets.
-            </Text>
+              <Card>
+              <Title order={2} align="center" mt="md" mb={10}>
+                Welcome to BeetWarden!
+              </Title>
+              <Text color="dimmed" align="center" mt={30}>
+                This is a password manager. It has nothing to do with beets.
+              </Text>
+              <Text color="dimmed" align="center" mb={30}>
+                Fact: Bears eat beets.
+              </Text>
 
-            <Text>
-              BeetWarden is an exercise where BaaS is applied with the help of{" "}
-              <Link href="https://www.convex.dev/">Convex</Link>. If you like to
-              take a look inside, you can use a google account, there is a
-              connection through Auth0, or, you can use this test account:
-            </Text>
-            <List>
-              <List.Item>
-                <Text fw={700}>Username: </Text> spongebob@squarepants.com{" "}
-              </List.Item>
-              <List.Item>
-                <Text fw={700}>Password: </Text> 1LovePatrick!
-              </List.Item>
-            </List>
-            <Text>
-              The source code is on{" "}
-              <Link href="https://github.com/andres039/beetWarden">GitHub</Link>
-              . Thank you for taking the time to look at this project. Any
-              feedback is appreciated, you may contact me on{" "}
-              <Link href="https://www.linkedin.com/in/andresbeltrangarcia/">
-                LinkedIn
-              </Link>{" "}
-            </Text>
-            <Button
-              fullWidth
-              mt="xl"
-              size="md"
-              variant="gradient"
-              gradient={{ from: "teal", to: "lime", deg: 105 }}
-              disabled={isLoading}
-              onClick={loginWithRedirect}
-            >
-              Login / Signup
-            </Button>
-          </Paper>
-        </div>
+              <Text>
+                BeetWarden is an exercise where BaaS is applied with the help of{" "}
+                <Link href="https://www.convex.dev/">Convex</Link>. If you like
+                to take a look inside, you can use a google account, there is a
+                connection through Auth0, or, you can use this test account:
+              </Text>
+              <List>
+                <List.Item>
+                  <Text fw={700}>Username: </Text> spongebob@squarepants.com{" "}
+                </List.Item>
+                <List.Item>
+                  <Text fw={700}>Password: </Text> 1LovePatrick!
+                </List.Item>
+              </List>
+              <Text>
+                The source code is on{" "}
+                <Link href="https://github.com/andres039/beetWarden">
+                  GitHub
+                </Link>
+                . Thank you for taking the time to look at this project. Any
+                feedback is appreciated, you may contact me on{" "}
+                <Link href="https://www.linkedin.com/in/andresbeltrangarcia/">
+                  LinkedIn
+                </Link>
+                .
+              </Text>
+              <Button
+                fullWidth
+                mt="xl"
+                size="md"
+                variant="gradient"
+                gradient={{ from: "teal", to: "lime", deg: 105 }}
+                disabled={isLoading}
+                onClick={loginWithRedirect}
+              >
+                Login / Signup
+              </Button>
+              </Card>
+            </Flex>
+          </Grid.Col>
+          {isMobile && (
+            <Grid.Col md={8} p={0}>
+              <div
+                style={{
+                  position: "relative",
+                  minHeight: "100vh",
+                  display: "block",
+                }}
+              >
+                <Image src={beetPic} alt="picture of beets" fill priority />
+              </div>
+            </Grid.Col>
+          )}
+        </Grid>
       </main>
     </div>
   );
