@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import AccountInfo from "./accountInfo";
-import Accounts from "./accounts";
+import Accounts from "./Navbar";
 import { Grid } from "@mantine/core";
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery } from "@mantine/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
 import Mobile from "./Mobile";
 
@@ -16,11 +16,11 @@ const Dashboard = () => {
     owner_id: "",
   });
   const [inputsDisabled, setInputsDisabled] = useState(false);
-  const isMobile = useMediaQuery('(min-width: 900px)');
+  const isMobile = useMediaQuery("(min-width: 900px)");
   return (
     <>
       {user && (
-        <Grid>
+        <Grid m="0">
           {!isMobile ? (
             <Mobile
               currentAccount={currentAccount}
