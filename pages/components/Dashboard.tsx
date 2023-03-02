@@ -17,10 +17,11 @@ const Dashboard = () => {
   });
   const [inputsDisabled, setInputsDisabled] = useState(false);
   const isMobile = useMediaQuery("(min-width: 900px)");
+  const setOpened = () => {}
   return (
     <>
       {user && (
-        <Grid m="0">
+        <Grid m="0" style={{backgroundColor: 'cornsilk'}}>
           {!isMobile ? (
             <Mobile
               currentAccount={currentAccount}
@@ -34,6 +35,7 @@ const Dashboard = () => {
                 <Accounts
                   setCurrentAccount={setCurrentAccount}
                   setInputsDisabled={setInputsDisabled}
+                  setOpened={setOpened}
                 />
               </Grid.Col>
 
@@ -42,7 +44,6 @@ const Dashboard = () => {
                   currentAccount={currentAccount}
                   inputsDisabled={inputsDisabled}
                   setInputsDisabled={setInputsDisabled}
-                  setCurrentAccount={setCurrentAccount}
                 />
               </Grid.Col>
             </>

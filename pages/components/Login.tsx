@@ -28,8 +28,9 @@ export default function Login() {
               align="center"
               direction="column"
               wrap="wrap"
+              style={{ backgroundColor: "cornsilk" }}
             >
-              <Card>
+              <Card style={{ backgroundColor: "Cornsilk" }} shadow="lg"  >
               <Title order={2} align="center" mt="md" mb={10}>
                 Welcome to BeetWarden!
               </Title>

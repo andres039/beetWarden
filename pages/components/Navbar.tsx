@@ -13,7 +13,7 @@ import { Avatar } from "@mantine/core";
 import { useQuery } from "../../convex/_generated/react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
+const Accounts = ({ setCurrentAccount, setOpened, setInputsDisabled }) => {
   const { user } = useAuth0();
   const name = user.given_name
     ? `${user.given_name}  ${user.family_name}`
@@ -25,8 +25,9 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
     const selectedAccount = accounts.find(
       (oneAccount) => id === oneAccount._id.toString()
     );
-    console.log("selected", selectedAccount);
+
     setCurrentAccount(selectedAccount);
+    setOpened(false);
   };
 
   useEffect(() => accounts && setCurrentAccount(accounts[0]), [accounts]);
@@ -55,7 +56,15 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
     );
   }
   return (
-    <Card style={{ minWidth: "90%", maxHeight: "100vh", paddingTop: "6vh" }}>
+    <Card
+      style={{
+        minWidth: "80%",
+        minHeight: "100vh",
+        paddingTop: "6vh",
+        backgroundColor: "cornsilk",
+      }}
+      shadow="xl"
+    >
       <Navbar.Section
         grow
         component={ScrollArea}
@@ -89,25 +98,23 @@ const Accounts = ({ setCurrentAccount, setInputsDisabled }) => {
       </Navbar.Section>
 
       <Navbar.Section component={ScrollArea}>
-        <Card withBorder>
-          <Stack>
-            {accounts &&
-              accounts.map((account) => (
-                <>
-                  <Button
-                    variant="subtle"
-                    key={account._id.toString()}
-                    onClick={() => {
-                      setAccount(account._id.toString());
-                      setInputsDisabled(true);
-                    }}
-                  >
-                    {account.name}
-                  </Button>
-                </>
-              ))}
-          </Stack>
-        </Card>
+        <Stack>
+          {accounts &&
+            accounts.map((account) => (
+              <>
+                <Button
+                  variant="subtle"
+                  key={account._id.toString()}
+                  onClick={() => {
+                    setAccount(account._id.toString());
+                    setInputsDisabled(true);
+                  }}
+                >
+                  {account.name}
+                </Button>
+              </>
+            ))}
+        </Stack>
       </Navbar.Section>
       <Navbar.Section>
         <Center style={{ padding: 20 }}>

@@ -22,13 +22,13 @@ const Mobile = ({
           <Accounts
             setCurrentAccount={setCurrentAccount}
             setInputsDisabled={setInputsDisabled}
+            setOpened={setOpened}
           />
         ) : (
           <AccountInfo
             currentAccount={currentAccount}
             inputsDisabled={inputsDisabled}
             setInputsDisabled={setInputsDisabled}
-            setCurrentAccount={setCurrentAccount}
           />
         )}
       </Stack>

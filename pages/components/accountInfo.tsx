@@ -44,9 +44,9 @@ const AccountInfo = ({
   }, [currentAccount]);
 
   return currentAccountInfo ? (
-    <Center style={{ minHeight: "100vh" }}>
-      <Card withBorder style={{ minWidth: "60vw" }}>
-        <Group position="apart" mt="md" mb="xs" styles={{ minWidth: "50vw" }}>
+    <Center style={{ minHeight: "100vh", backgroundColor: 'cornsilk'}} >
+      <Card  shadow="lg" style={{ minWidth: "60vw", backgroundColor: 'cornsilk' }}>
+        <Group position="apart" mt="md" mb="xs">
           <Text weight={800}>{currentAccountInfo.name}</Text>
           <Group>
             <Button
